@@ -1,0 +1,40 @@
+name: "malskills-detector-orchestrator"
+version: "1.0.0"
+
+input:
+  required:
+    target_path:
+      type: string
+      description: "Path to the skill directory or ORPHEUS system directory to analyze for malicious activities"
+  optional:
+    output_path:
+      type: string
+      description: "Custom path for the output report. Defaults to {target_path}/malskill_analysis_report.md"
+      default: null
+    verbose:
+      type: boolean
+      description: "Whether to include informational-level findings in the report"
+      default: true
+
+output:
+  required:
+    report_path:
+      type: string
+      description: "Path to the generated malskill_analysis_report.md file"
+    overall_risk_rating:
+      type: enum
+      description: "Overall risk rating of the analyzed system"
+      enum_values: [CRITICAL, HIGH, MEDIUM, LOW, CLEAN]
+    total_findings:
+      type: number
+      description: "Total number of findings across all severity levels"
+    execution_summary:
+      type: string
+      description: "Human-readable summary of the analysis execution"
+  optional:
+    kill_chain_coverage:
+      type: number
+      description: "Number of kill chain stages covered (0-7)"
+    coordinated_patterns:
+      type: number
+      description: "Number of coordinated threat patterns detected"

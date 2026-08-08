@@ -1,0 +1,11 @@
+job_id: correlation
+job_type: correlation
+expert: correlation-expert
+status: pending
+dependencies:
+  - threat-analysis
+input:
+  dependency_results:
+    - .orpheus/state/execution/e001/results/threat-analysis.yaml
+retry_count: 0
+max_retries: 2

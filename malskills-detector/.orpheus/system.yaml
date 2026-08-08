@@ -1,0 +1,36 @@
+system:
+  name: "malskills-detector"
+  description: "Detects malicious activities in skill files and multi-skill orchestration systems (like ORPHEUS). Analyzes all files for data exfiltration, C2 connections, lateral movement, anti-forensics, CLAUDE.md manipulation, and other kill-chain-connected impacts. Correlates across skills to detect coordinated malicious intent. Maps findings to the cyber kill chain framework."
+
+orchestrator:
+  strategy: sequential
+  max_retries: 2
+  timeout_seconds: 600
+  escalation: user
+  routing:
+    - job_type: ingestion
+      expert: ingestion-expert
+      description: "File discovery and content extraction"
+    - job_type: threat-analysis
+      expert: threat-analysis-expert
+      description: "Per-file malicious pattern detection"
+    - job_type: correlation
+      expert: correlation-expert
+      description: "Cross-skill correlation and kill chain mapping"
+    - job_type: report-generation
+      expert: report-expert
+      description: "Final report generation"
+
+logging:
+  level: info
+  log_actions: true
+  log_decisions: true
+  log_contracts: true
+  log_lifecycle: true
+  log_delegations: true
+  assemble_timeline: true
+  assemble_decisions: true
+  assemble_errors: true
+  retain_last: 20
+  log_builds: true
+  build_retain_last: 10

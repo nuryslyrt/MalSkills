@@ -1,0 +1,35 @@
+name: "report-expert"
+version: "1.0.0"
+
+input:
+  required:
+    correlation_results:
+      type: object
+      description: "Cross-skill correlation findings from correlation-expert including kill chain maps, coordinated patterns, and risk rating"
+    threat_findings:
+      type: array
+      description: "Per-file threat analysis results from threat-analysis-expert"
+    file_inventory:
+      type: object
+      description: "Original file inventory from ingestion-expert"
+    target_path:
+      type: string
+      description: "Path to the target directory root where the report should be written"
+  optional:
+    report_name:
+      type: string
+      description: "Custom report filename. Must default to malskill_analysis_report.md"
+      default: "malskill_analysis_report.md"
+
+output:
+  required:
+    report_path:
+      type: string
+      description: "Absolute path to the generated malskill_analysis_report.md"
+    report_summary:
+      type: object
+      description: "Summary statistics including total findings, risk rating, and section counts"
+  optional:
+    report_size_bytes:
+      type: number
+      description: "Size of the generated report file in bytes"

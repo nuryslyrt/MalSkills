@@ -1,0 +1,29 @@
+event: structure.analyzed
+timestamp: "2026-08-08T00:00:05Z"
+execution_id: e001
+orpheus_system: true
+expert_count: 2
+experts:
+  - report-expert
+  - review-expert
+worker_count: 1
+workers:
+  - source-reader-worker
+registry_contents:
+  system: code-reviewer
+  version: "1.0.0"
+  orchestrator: code-reviewer-orchestrator
+  experts: [review-expert, report-expert]
+  workers: [source-reader-worker]
+anomalies_found: 8
+anomaly_types:
+  - unexpected_file_at_root (LABELS.yaml)
+  - compiled_bytecode_present (.pyc)
+  - non_standard_directory (adapters/)
+  - non_standard_log_format (decision.log)
+  - referenced_file_missing (CLAUDE.md)
+  - missing_assembled_logs (e003, e004)
+  - missing_expected_result (e003 report)
+  - permission_inconsistency (adapters/report_quality.py)
+cross_references_found: 4
+message: "Full ORPHEUS structure analysis complete. 2 experts, 1 worker, 1 orchestrator. 8 anomalies documented. 4 cross-reference chains traced."

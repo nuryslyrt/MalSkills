@@ -1,0 +1,11 @@
+execution_id: e001
+status: running
+batches:
+  - batch: 1
+    jobs: [ingestion]
+  - batch: 2
+    jobs: [threat-analysis]
+  - batch: 3
+    jobs: [correlation]
+  - batch: 4
+    jobs: [report-generation]

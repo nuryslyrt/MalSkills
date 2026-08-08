@@ -1,0 +1,40 @@
+system: "malskills-detector"
+version: "1.0.0"
+
+skills:
+  orchestrator:
+    name: "malskills-detector-orchestrator"
+    path: "orchestrator/SKILL.md"
+    version: "1.0.0"
+    contract: "orchestrator/contract.yaml"
+
+  experts:
+    - name: "ingestion-expert"
+      path: "experts/ingestion-expert/SKILL.md"
+      version: "1.0.0"
+      contract: "experts/ingestion-expert/contract.yaml"
+      tags: [ingestion, file-discovery, content-extraction]
+      compatible_workers: []
+
+    - name: "threat-analysis-expert"
+      path: "experts/threat-analysis-expert/SKILL.md"
+      version: "1.0.0"
+      contract: "experts/threat-analysis-expert/contract.yaml"
+      tags: [threat-analysis, pattern-detection, security]
+      compatible_workers: []
+
+    - name: "correlation-expert"
+      path: "experts/correlation-expert/SKILL.md"
+      version: "1.0.0"
+      contract: "experts/correlation-expert/contract.yaml"
+      tags: [correlation, kill-chain, cross-skill-analysis]
+      compatible_workers: []
+
+    - name: "report-expert"
+      path: "experts/report-expert/SKILL.md"
+      version: "1.0.0"
+      contract: "experts/report-expert/contract.yaml"
+      tags: [report-generation, markdown, security-report]
+      compatible_workers: []
+
+  workers: []

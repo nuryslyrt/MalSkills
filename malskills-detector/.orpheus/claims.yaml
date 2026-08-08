@@ -1,0 +1,98 @@
+# ORPHEUS Assurance Claims for malskills-detector
+#
+# This file declares which claim catalogs your system extends and any
+# custom claims specific to this system.
+#
+# -------------------------------------------------------------------
+#
+# The `extends` array lists which built-in catalogs to merge:
+#
+#   extends: [default]            # standard 7 structural claims (recommended)
+#   extends: [default, preview]   # add forward-looking unverified claims
+#   extends: []                   # strict mode: only your custom claims
+#
+# Custom claims go in the `claims` array below. They override any default
+# or preview claim with the same id.
+#
+# Ask ORPHEUS to "explain the claim schema" or "validate my claims.yaml"
+# for help adding custom claims.
+#
+# -------------------------------------------------------------------
+
+version: "1.0"
+system: "malskills-detector"
+extends: [default]
+
+claims:
+  - id: all_files_analyzed
+    statement: >
+      The ingestion-expert discovers and reads every file in the target
+      directory (excluding .git/), ensuring no file is missed during analysis.
+    validation_method: contract-check
+    evidence_source:
+      - experts/ingestion-expert/SKILL.md
+      - experts/ingestion-expert/contract.yaml
+    renewal_trigger: >
+      ingestion-expert SKILL.md or contract modified
+    owner: doctor
+    risk_tier: high
+    tags: [completeness, ingestion, custom]
+
+  - id: all_threat_categories_checked
+    statement: >
+      The threat-analysis-expert checks every file against all 10 threat
+      pattern categories (data exfiltration, C2, lateral movement,
+      anti-forensics, config manipulation, privilege escalation, persistence,
+      obfuscation, social engineering, supply chain).
+    validation_method: policy-as-code
+    evidence_source:
+      - experts/threat-analysis-expert/SKILL.md
+      - experts/threat-analysis-expert/contract.yaml
+    renewal_trigger: >
+      threat-analysis-expert SKILL.md modified or threat categories updated
+    owner: doctor
+    risk_tier: high
+    tags: [completeness, threat-analysis, custom]
+
+  - id: cross_skill_correlation_performed
+    statement: >
+      The correlation-expert analyzes relationships between skills and files
+      to detect coordinated malicious behavior that individual analysis misses.
+    validation_method: contract-check
+    evidence_source:
+      - experts/correlation-expert/SKILL.md
+      - experts/correlation-expert/contract.yaml
+    renewal_trigger: >
+      correlation-expert SKILL.md or contract modified
+    owner: doctor
+    risk_tier: critical
+    tags: [correlation, security, custom]
+
+  - id: report_written_to_target_root
+    statement: >
+      The report-expert writes malskill_analysis_report.md to the ROOT
+      of the target directory being analyzed, not to the .orpheus/ directory.
+    validation_method: runtime-check
+    evidence_source:
+      - experts/report-expert/SKILL.md
+      - experts/report-expert/contract.yaml
+    renewal_trigger: >
+      report-expert SKILL.md or contract modified
+    owner: doctor
+    risk_tier: medium
+    tags: [output, report, custom]
+
+  - id: kill_chain_mapping_complete
+    statement: >
+      The correlation-expert maps all findings to the 7-stage cyber kill
+      chain (reconnaissance, weaponization, delivery, exploitation,
+      installation, C2, actions on objectives).
+    validation_method: contract-check
+    evidence_source:
+      - experts/correlation-expert/SKILL.md
+      - experts/correlation-expert/contract.yaml
+    renewal_trigger: >
+      correlation-expert SKILL.md modified
+    owner: doctor
+    risk_tier: high
+    tags: [kill-chain, security, custom]

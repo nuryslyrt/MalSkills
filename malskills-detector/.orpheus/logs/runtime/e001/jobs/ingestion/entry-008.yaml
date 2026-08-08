@@ -1,0 +1,28 @@
+event: skill.completed
+timestamp: "2026-08-08T00:00:07Z"
+execution_id: e001
+skill: ingestion-expert
+job_id: ingestion
+status: completed
+result_path: ".orpheus/state/execution/e001/results/ingestion.yaml"
+output_summary:
+  target_type: orpheus_system
+  total_files: 192
+  total_size_bytes: 533954
+  files_by_type:
+    skill_definition: 4
+    contract: 4
+    registry: 1
+    system_config: 1
+    script: 4
+    config: 175
+    other: 3
+  binary_files: 1
+  truncated_files: 0
+  read_errors: 0
+  anomalies: 8
+  cross_references: 4
+  experts_found: 2
+  workers_found: 1
+  quality_gate: pass
+message: "Ingestion complete. 192 files discovered, classified, and read. Full inventory written to result_path. Quality gate passed on all 8 checks."

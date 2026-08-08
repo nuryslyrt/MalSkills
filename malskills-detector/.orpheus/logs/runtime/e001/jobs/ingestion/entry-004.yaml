@@ -1,0 +1,8 @@
+event: extraction.progress
+timestamp: "2026-08-08T00:00:03Z"
+execution_id: e001
+message: "Content extraction complete for all 192 files. All text files read in full. 1 binary file (.pyc) identified. 1 file over 50KB truncated at 2000 lines (review-source-reader-worker.yaml, 119574 bytes)."
+files_read: 191
+binary_skipped: 1
+truncated: 1
+errors: 0

@@ -1,0 +1,6 @@
+event: skill.invoked
+timestamp: "2026-08-08T00:00:00Z"
+execution_id: e001
+job_id: ingestion
+target_path: "/Users/glitchwarden/Documents/DEFCON34_Prep/orphys/TestBeds/TestBed5/code-reviewer"
+message: "Ingestion expert invoked. Beginning file discovery and content extraction."

@@ -1,0 +1,12 @@
+job_id: report-generation
+job_type: report-generation
+expert: report-expert
+status: pending
+dependencies:
+  - correlation
+input:
+  dependency_results:
+    - .orpheus/state/execution/e001/results/correlation.yaml
+    - .orpheus/state/execution/e001/results/threat-analysis.yaml
+retry_count: 0
+max_retries: 2

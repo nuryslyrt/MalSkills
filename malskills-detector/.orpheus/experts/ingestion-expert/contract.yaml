@@ -1,0 +1,36 @@
+name: "ingestion-expert"
+version: "1.0.0"
+
+input:
+  required:
+    target_path:
+      type: string
+      description: "Path to the skill directory or ORPHEUS system directory to discover and ingest files from"
+  optional:
+    exclude_patterns:
+      type: array
+      description: "File patterns to exclude from discovery (e.g., .git/). Defaults to ['.git/']"
+      default: [".git/"]
+
+output:
+  required:
+    file_inventory:
+      type: object
+      description: "Complete structured inventory of all discovered files with contents, classifications, and metadata"
+    total_files:
+      type: number
+      description: "Total number of files discovered"
+    system_type:
+      type: enum
+      description: "Type of system detected at the target path"
+      enum_values: [single_skill, orpheus_system, directory]
+    files_by_type:
+      type: object
+      description: "Breakdown of file counts by classification type"
+  optional:
+    structure_analysis:
+      type: object
+      description: "ORPHEUS system structure analysis (only present if system_type is orpheus_system)"
+    cross_references:
+      type: array
+      description: "List of cross-references between files (file A references file B)"

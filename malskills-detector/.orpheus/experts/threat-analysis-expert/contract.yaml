@@ -1,0 +1,38 @@
+name: "threat-analysis-expert"
+version: "1.0.0"
+
+input:
+  required:
+    file_inventory:
+      type: object
+      description: "Structured file inventory from ingestion-expert containing file paths, contents, and classifications"
+  optional:
+    focus_categories:
+      type: array
+      description: "Specific threat categories to focus on. Defaults to all 10 categories."
+      default: null
+
+output:
+  required:
+    threat_findings:
+      type: array
+      description: "Array of per-file threat findings with severity, category, indicators, and kill chain mappings"
+    total_files_analyzed:
+      type: number
+      description: "Total number of files that were analyzed"
+    files_with_findings:
+      type: number
+      description: "Number of files that had at least one finding"
+    findings_by_severity:
+      type: object
+      description: "Count of findings grouped by severity level (critical, high, medium, low, informational)"
+    findings_by_category:
+      type: object
+      description: "Count of findings grouped by threat category"
+    findings_by_kill_chain:
+      type: object
+      description: "Count of findings grouped by kill chain stage"
+  optional:
+    clean_files:
+      type: array
+      description: "List of files that were analyzed and found clean"

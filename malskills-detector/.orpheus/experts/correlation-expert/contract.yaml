@@ -1,0 +1,43 @@
+name: "correlation-expert"
+version: "1.0.0"
+
+input:
+  required:
+    threat_findings:
+      type: array
+      description: "Per-file threat analysis results from threat-analysis-expert"
+    file_inventory:
+      type: object
+      description: "Original file inventory from ingestion-expert with contents and structure"
+  optional:
+    system_type:
+      type: enum
+      description: "Type of system being analyzed, affects correlation strategies"
+      enum_values: [single_skill, orpheus_system, directory]
+      default: "directory"
+
+output:
+  required:
+    coordinated_patterns:
+      type: array
+      description: "Array of coordinated threat patterns detected across skills/files"
+    kill_chain_map:
+      type: object
+      description: "Mapping of kill chain stages to contributing files/skills with evidence"
+    kill_chain_coverage:
+      type: number
+      description: "Number of kill chain stages covered (0-7)"
+    overall_risk_rating:
+      type: enum
+      description: "Overall system risk rating based on coordinated analysis"
+      enum_values: [CRITICAL, HIGH, MEDIUM, LOW, CLEAN]
+    risk_justification:
+      type: string
+      description: "Detailed justification for the overall risk rating"
+  optional:
+    interaction_map:
+      type: object
+      description: "Map of cross-skill interactions and data flows"
+    recommended_actions:
+      type: array
+      description: "Prioritized list of recommended remediation actions"

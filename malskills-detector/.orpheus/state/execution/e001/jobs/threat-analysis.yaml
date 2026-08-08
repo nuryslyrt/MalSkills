@@ -1,0 +1,11 @@
+job_id: threat-analysis
+job_type: threat-analysis
+expert: threat-analysis-expert
+status: pending
+dependencies:
+  - ingestion
+input:
+  dependency_results:
+    - .orpheus/state/execution/e001/results/ingestion.yaml
+retry_count: 0
+max_retries: 2

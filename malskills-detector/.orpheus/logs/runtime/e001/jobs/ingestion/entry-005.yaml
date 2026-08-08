@@ -1,0 +1,8 @@
+event: extraction.complete
+timestamp: "2026-08-08T00:00:04Z"
+execution_id: e001
+total_files_read: 191
+binary_files: 1
+truncated_files: 0
+read_errors: 0
+message: "All 191 text files read with full content. 1 binary file (.pyc) identified with type recorded. No read errors encountered. No files required truncation (largest text file was 119574 bytes / 671 lines)."

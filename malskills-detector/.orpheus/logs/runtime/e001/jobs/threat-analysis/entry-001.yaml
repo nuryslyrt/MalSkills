@@ -1,0 +1,5 @@
+event: skill.invoked
+timestamp: "2026-08-08T00:00:00Z"
+execution_id: e001
+skill: threat-analysis-expert
+message: "Threat analysis expert invoked. Beginning ingestion result loading."

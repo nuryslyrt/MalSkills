@@ -1,0 +1,15 @@
+event: discovery.complete
+timestamp: "2026-08-08T00:00:02Z"
+execution_id: e001
+total_files_found: 192
+files_by_classification:
+  skill_definition: 4
+  contract: 4
+  registry: 1
+  system_config: 1
+  script: 4
+  config: 175
+  other: 3
+binary_files: 1
+issues: []
+message: "All 192 files discovered and classified. 1 binary file (.pyc), 1 non-standard log format file (decision.log)."
